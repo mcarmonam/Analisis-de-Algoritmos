@@ -1,0 +1,61 @@
+import java.util.Hashtable;
+import java.util.ArrayList;
+import java.util.LinkedList;
+public class Grafica{
+	public Hashtable<String,Integer> vertices;
+	public Hashtable<String,LinkedList<String>> adyacencias;
+	public LinkedList<Arista> aristas;
+	//dados dos vertices guarda la arista que los une 
+	public Hashtable<String,Hashtable<String,Arista>> relaciones;
+	/** 
+	 * Constructor Vac&iacute;o 
+	 */
+	public Grafica(){
+		vertices = new Hashtable<>();
+		aristas = new LinkedList<>();
+		adyacencias = new Hashtable<>();
+		//para Prim
+		relaciones = new Hashtable<>();
+	}
+	/** 
+	 * agrega vertices a la gr&aacute;fica
+	 * @param s nombre del vertice
+	 * @param i Id del v&eacure;rtice
+	 */
+	public void addVe(String s,int i){
+		vertices.put(s,i);
+	}
+	/** 
+	 * agrega aristas a la grafica 
+	 * @param a 
+	 */
+	public void addAr(Arista a){
+		aristas.add(a);
+	}
+	/** 
+	 * Asigna a v1 el vecino v2
+	 * @param v1
+	 * @param v2 
+	 */
+	public void putNe(String v1,String v2){
+		if(adyacencias.containsKey(v1)){
+			adyacencias.get(v1).add(v2);
+		}else{
+			LinkedList<String> l = new LinkedList<>();
+			l.add(v2);
+			adyacencias.put(v1,l);
+		}
+	}
+
+	public void putArs(String v1,String v2,Arista a){
+		if(relaciones.containsKey(v1)){
+			//existe ya un hashtable 
+			Hashtable<String,Arista> u = relaciones.get(v1);
+			u.put(v2,a);
+		}else{
+			Hashtable<String,Arista> h = new Hashtable<>();
+			h.put(v2,a);
+			relaciones.put(v1,h);
+		}
+	}
+}

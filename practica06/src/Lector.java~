@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.Random;
+//Creacioón del archivo de Salida 
+import java.io.FileWriter;
+import java.io.IOException;
+/**
+ * Lector de graficas desde archivos de texto
+ * @author Carlos Naranjo Robledo 
+ */
+public class Lector{
+  // Atributos de Lector
+  public String[] vertices;
+  //Lista de adyacencias
+  public ArrayList<String[]> aristas; 
+  /**
+   * Constructor del lector
+   * Recibe el nombre de un archivo de texto y almacena el arreglo de vertices y aristas en el objeto.
+   * @param filename Nombre del archivo de texto a procesar
+   */
+  public Lector(String filename){
+    //Guarda Arreglos de tamaño 3
+    aristas = new ArrayList<>(); 
+    leerArchivo(filename);
+  }
+  /**
+   * Metodo que dado un nombre de archivo almacena en el objeto los vertices y las aristas del archivo de texto
+   * @param filename Nombre del archivo de texto a procesar
+   */
+  public void leerArchivo(String filename){
+    //Exception
+    try(BufferedReader br = new BufferedReader(new FileReader(filename))){
+      String line;
+      for(int i = -1; (line = br.readLine()) != null; i++){
+      	//parser del archivo
+        if(i == -1){
+          //llenando el atributo
+          //String(trim,split)
+          vertices = line.trim().split("\\s*,\\s*"); 
+        }else{
+          String[] lineaAristas = line.trim().split("\\s*,\\s*");
+          aristas.add(lineaAristas);
+        }
+      }
+    }catch(Exception e){
+      System.err.println(e);
+    }
+
+  }
+}

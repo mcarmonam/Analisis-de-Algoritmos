@@ -1,0 +1,26 @@
+public class Ordenamiento{
+
+    public void insertionSort(int[] arreglo){
+
+	int n = arreglo.length;
+	for (int i = 1; i < n; ++i){
+	    int pivote = arr[i];
+	    int j = i-1;
+	    while (j >= 0 && arreglo[j] > pivote){
+		arreglo[j+1] = arreglo[j];
+		j = j - 1;
+	    }
+	    arreglo[j+1] = pivote;
+	}
+    }
+
+
+
+
+
+    public static void main(){
+	int[] ejemplo = {9,8,7,6,5,4,3,2,1};
+	int[] resultado = insertionSort(ejemplo);
+	System.out.println(resultado);
+    }
+}

@@ -1,0 +1,40 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
+public class Main{
+
+    public static void main(String[] args) {
+
+	String archivo = args[0];
+	int elemento = Integer.parseInt(args[1]);
+	String opcion = args[2];
+	String linea;
+	String[] fake = null;
+	int[] real = null;
+	Busqueda ob = new Ordenamiento();
+
+	try {
+
+	    FileReader fi = new FileReader(archivo);
+	    BufferedReader li = new BufferedReader(fi);
+
+	    while((linea = li.readLine()) != null){
+		fake = linea.split(" ");
+	    }
+
+	    real = new int[fake.length];
+	    for(int i = 0; i < fake.length; i++){
+		real[i] = Integer.parseInt(fake[i]);
+	    }
+
+	    switch(opcion){
+	    case "counting":
+		System.out.println(ob.sequentialSearch(real));
+		break;
+	    }
+	} catch(IOException e) {
+
+	}
+    }
+}

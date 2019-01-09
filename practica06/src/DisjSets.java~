@@ -1,0 +1,40 @@
+
+public class DisjSets{
+	private int[][] set;
+	/** 
+	 * Obtiene el representante
+	 * @return 
+	 */
+	public int getRe(int i){
+		if(i==set[i][1]) return i;
+		else return getRe(set[i][1]);
+	}
+
+	/** 
+	 * Representacion de los conjuntos agenos
+	 * no ocupamos la posición 0 
+	 * @param i n&uacute;mero de conjuntos agenos iniciales 
+	 */
+	public DisjSets(int i){
+		set = new int[i+1][2];
+		for (int j = 1;j<i+1;j++){
+			set[j][0] = j;
+			set[j][1] = j;
+		}
+	}
+	/** 
+	 * Union by size 
+	 * @param i indice del vertice1
+	 * @param j indice del vertice2
+	 * @param re1 representante del vertice1
+	 * @param re2 representante del vertice2
+	 */
+	public void union(int i, int j, int re1,int re2){
+		if(re1>re2){
+			set[re2][1] = re1;
+		}else{
+			set[re1][1] = re2;
+		}
+	}
+
+}

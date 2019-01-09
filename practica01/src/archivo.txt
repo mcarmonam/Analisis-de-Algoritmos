@@ -1,0 +1,17 @@
+A,B,C,D,E,F,G,H,I,J,K
+A,C
+B,C
+B,E
+C,D
+D,F
+D,G
+E,F
+E,H
+F,G
+F,I
+F,K
+G,I
+H,J
+I,J
+I,K
+J,K
